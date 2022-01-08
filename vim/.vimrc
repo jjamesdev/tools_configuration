@@ -1,4 +1,6 @@
 " configuration File vim ... !!! !! +> ''''''
+" 🔑 (key)
+" 🔑 (key)
 set number
 set mouse=a
 set numberwidth=1
@@ -75,6 +77,11 @@ Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
 Plug 'patstockwell/vim-monokai-tasty'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'diepm/vim-rest-console'
+Plug 'vimwiki/vimwiki'
+Plug 'junegunn/vim-emoji'
 call plug#end()
 
 set termguicolors     " enable true colors support
@@ -224,7 +231,7 @@ else
   set listchars=trais:~
   set list
 endif
-
+autocmd BufWritePre *.js %s/\s\+$//e
 
 
 " test skeleton files
@@ -274,3 +281,38 @@ set t_ZR=[23m
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
+
+
+"emmet config jsx
+
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+
+let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' } }
+
+" let g:vrc_output_buffer_name = '__VRC_OUTPUT.json'
+let g:vrc_response_default_content_type = 'application/json'
+let g:vrc_curl_opts = {
+  \ '-sS': '',
+  \ '--connect-timeout': 10,
+  \ '-i': '',
+  \ '--max-time': 60,
+  \ '-k': '',
+\}
+
+" vimwiki
+let g:vimwiki_list = [{'path' : 'C://Users//IsitaDev013//Dropbox//vimwiki//'}]
+let g:vimwiki_list = [{'path': 'C://Users//IsitaDev013//Dropbox//vimwiki//',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" emoji
+" for e in emoji#list()
+  " call append(line('$'), printf('%s (%s)', emoji#for(e), e))
+" endfor
+
+set completefunc=emoji#complete
+
