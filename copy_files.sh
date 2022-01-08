@@ -29,7 +29,6 @@ then
   git status
   git commit -m "Archivos actualizados"
   git push origin main
-  git log -1 -p
   echo "Los archivos han sido agregados al repositorio"
 else
   echo "Nada que agregar :D"
